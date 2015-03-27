@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/album_overflow_rename"
+        android:icon="@drawable/out60"
+        android:title="领用扫描" />
+
+    <item
+        android:id="@+id/album_overflow_lock"
+        android:icon="@drawable/in60"
+        android:title="返还扫描" />
+
+
+</menu>

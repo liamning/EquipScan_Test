@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:MainActivity23Activity="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.ning.myapplicationsdfsdf.MainActivity23Activity">
+
+
+    <item android:id="@+id/action_search"
+        android:title="完成扫描"
+        MainActivity23Activity:showAsAction="ifRoom"  />
+
+
+
+</menu>

@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:HistoryActiviry="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.ning.myapplicationsdfsdf.HistoryActiviry"
+
+    android:textSize="20dp"
+    >
+
+    <item android:id="@+id/action_search"
+        android:title="保存扫描"
+        HistoryActiviry:showAsAction="ifRoom"  />
+
+
+</menu>
