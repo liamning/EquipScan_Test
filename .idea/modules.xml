@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyApplicationsdfsdf.iml" filepath="$PROJECT_DIR$/MyApplicationsdfsdf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EquipScan_Test.iml" filepath="$PROJECT_DIR$/EquipScan_Test.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/qRCodeReaderViewlib/qRCodeReaderViewlib.iml" filepath="$PROJECT_DIR$/qRCodeReaderViewlib/qRCodeReaderViewlib.iml" />
     </modules>
