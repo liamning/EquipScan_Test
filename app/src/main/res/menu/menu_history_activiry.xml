@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:HistoryActiviry="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.ning.myapplicationsdfsdf.HistoryActiviry"
+    tools:context="com.equipscan.activity.HistoryActiviry"
 
     android:textSize="20dp"
     >

@@ -1,4 +1,4 @@
-package com.example.ning.myapplicationsdfsdf;
+package com.equipscan.activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,7 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.ning.info.EquipmentInfo;
+import com.equipscan.info.EquipmentInfo;
+import com.example.ning.myapplicationsdfsdf.R;
 
 
 public class ScanDetails extends ActionBarActivity {

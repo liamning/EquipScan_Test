@@ -1,11 +1,9 @@
-package com.example.ning.myapplicationsdfsdf;
+package com.equipscan.activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,31 +15,19 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.ning.info.EquipmentInfo;
+import com.equipscan.info.EquipmentInfo;
+import com.example.ning.myapplicationsdfsdf.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
-import android.app.Activity;
-import android.graphics.PointF;
-import android.os.Bundle;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
-
-import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
-import com.dlazaro66.qrcodereaderview.QRCodeReaderView.OnQRCodeReadListener;
 
 public class HistoryActiviry extends ActionBarActivity {
 

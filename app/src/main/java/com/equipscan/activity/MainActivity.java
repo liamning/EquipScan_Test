@@ -1,43 +1,24 @@
-package com.example.ning.myapplicationsdfsdf;
+package com.equipscan.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
-import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 
-import com.ning.info.EquipmentInfo;
+import com.equipscan.info.EquipmentInfo;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import android.app.Activity;
-import android.graphics.PointF;
-import android.os.Bundle;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
-import com.dlazaro66.qrcodereaderview.QRCodeReaderView.OnQRCodeReadListener;
+import com.example.ning.myapplicationsdfsdf.R;
 
 public class MainActivity extends ActionBarActivity {
 

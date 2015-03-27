@@ -1,4 +1,4 @@
-package com.ning.info;
+package com.equipscan.info;
 
 import android.os.Parcel;
 import android.os.Parcelable;

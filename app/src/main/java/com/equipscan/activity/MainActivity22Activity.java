@@ -1,10 +1,9 @@
-package com.example.ning.myapplicationsdfsdf;
+package com.equipscan.activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TextView;
+
+import com.example.ning.myapplicationsdfsdf.R;
 
 
 public class MainActivity22Activity extends ActionBarActivity {

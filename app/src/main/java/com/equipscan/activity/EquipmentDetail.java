@@ -1,9 +1,11 @@
-package com.example.ning.myapplicationsdfsdf;
+package com.equipscan.activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.ning.myapplicationsdfsdf.R;
 
 
 public class EquipmentDetail extends ActionBarActivity {

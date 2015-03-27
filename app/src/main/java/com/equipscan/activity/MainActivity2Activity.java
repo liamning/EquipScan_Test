@@ -1,36 +1,28 @@
-package com.example.ning.myapplicationsdfsdf;
+package com.equipscan.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView.OnQRCodeReadListener;
-import com.ning.info.EquipmentInfo;
+import com.equipscan.info.EquipmentInfo;
+import com.example.ning.myapplicationsdfsdf.R;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class MainActivity2Activity extends ActionBarActivity implements OnQRCodeReadListener {
 String TITLE;

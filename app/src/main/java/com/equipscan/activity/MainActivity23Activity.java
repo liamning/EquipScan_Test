@@ -1,17 +1,16 @@
-package com.example.ning.myapplicationsdfsdf;
+package com.equipscan.activity;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.ning.info.EquipmentInfo;
+import com.equipscan.info.EquipmentInfo;
+import com.example.ning.myapplicationsdfsdf.R;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 
 public class MainActivity23Activity extends ActionBarActivity {

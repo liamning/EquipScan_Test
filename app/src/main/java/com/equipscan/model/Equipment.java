@@ -1,10 +1,9 @@
-package com.ning.handler;
+package com.equipscan.model;
 
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.ning.info.EquipmentInfo;
+import com.equipscan.info.EquipmentInfo;
 
 import java.util.ArrayList;
 import java.util.Date;
