@@ -53,8 +53,8 @@ public class ScanDetails extends ActionBarActivity {
 // Create an ArrayAdapter using the string array and a default spinner layout
 
 
-        ArrayAdapter<String> karant_adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, new String[]{"倉管員A","倉管員B"});
+        ArrayAdapter<String> karant_adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, new String[]{"倉管員A","倉管員B2"});
 //
 // Specify the layout to use when the list of choices appears
         //karant_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
