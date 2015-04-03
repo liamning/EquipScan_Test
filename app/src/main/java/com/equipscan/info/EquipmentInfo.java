@@ -120,6 +120,9 @@ public class EquipmentInfo implements Parcelable {
 
         pc.writeString(name);
         pc.writeInt(inOut);
+        pc.writeString(StaffName);
+        pc.writeString(Remarks);
+        pc.writeString(Approver);
     }
 
     /** Static field used to regenerate object, individually or as arrays */
@@ -138,6 +141,9 @@ public class EquipmentInfo implements Parcelable {
         checkInDate         = new Date(pc.readLong());
         name        =  pc.readString();
         inOut        =  pc.readInt();
+        StaffName        =  pc.readString();
+        Remarks        =  pc.readString();
+        Approver        =  pc.readString();
     }
 
 

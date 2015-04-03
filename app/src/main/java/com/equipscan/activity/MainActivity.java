@@ -177,8 +177,8 @@ public class MainActivity extends ActionBarActivity {
 
 
                 EquipmentInfo info = new EquipmentInfo();
-                info.setID("123");
-                info.setName("test");
+                info.setID("A0001");
+                info.setName("防电手套");
                 info.setInOut(1);
                 info.setCheckInDate(new Date());
 

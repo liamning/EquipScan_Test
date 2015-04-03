@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.equipscan.info.EquipmentInfo;
+import com.equipscan.model.Equipment;
 import com.example.ning.myapplicationsdfsdf.R;
 
 import java.text.SimpleDateFormat;
@@ -31,11 +32,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class HistoryActiviry extends ActionBarActivity {
 
-    ArrayList<EquipmentInfo> myEquipments = new ArrayList<EquipmentInfo>();
+    ArrayList<EquipmentInfo> myEquipments;
     Boolean isTmp;
-    SQLiteDatabase db;
-
-
 
 
     @Override
@@ -53,27 +51,17 @@ public class HistoryActiviry extends ActionBarActivity {
             isTmp = true;
         }
         else {
-            prepareEquipment();
 
             getSupportActionBar().setTitle("扫描记录");
 
             isTmp = false;
         }
-        setListView();
-
-       // prepareDB();
-
-
     }
 
-    private void prepareDB()
-    {
-
-        db=openOrCreateDatabase("EquipmentDB", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS Equipment(ID VARCHAR,name VARCHAR,checkinDate int,inOut int);");
-    }
 
     private void setListView() {
+
+
           ListView equipmentListView = (ListView)findViewById(R.id.myList);
           ArrayAdapter<EquipmentInfo> adapter = new MyListAdapter();
         equipmentListView.setAdapter(adapter);
@@ -101,30 +89,28 @@ public class HistoryActiviry extends ActionBarActivity {
 
     private void prepareEquipment() {
 
-        prepareDB();
-        EquipmentInfo info;
-        Cursor c=db.rawQuery("SELECT * FROM Equipment order by CheckinDate desc", null);
-        if(c.moveToFirst())
-        {
-            do{
-                info = new EquipmentInfo();
+        Equipment equipment = new Equipment();
 
-                info.setID(c.getString(0));
-                info.setName(c.getString(1));
-                info.setCheckInDate(new Date(c.getLong(2)));
-                info.setInOut(c.getInt(3));
-
-                myEquipments.add(info);
-
-            }while (c.moveToNext());
-        }
-        else
+        equipment.prepareDB(this);
+        myEquipments = equipment.getEquipmentList(100);
+        if(myEquipments.size() == 0)
         {
             showMessage("错误", "你没有扫描记录");
         }
 
-        db.close();
+        equipment.closeDB();
+    }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        if(!isTmp)
+        {
+            prepareEquipment();
+        }
+        setListView();
     }
 
     private class MyListAdapter extends ArrayAdapter<EquipmentInfo> {
@@ -168,7 +154,6 @@ public class HistoryActiviry extends ActionBarActivity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -193,25 +178,13 @@ public class HistoryActiviry extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_search) {
 
-            prepareDB();
+            Equipment equipment = new Equipment();
 
-            EquipmentInfo info;
-            for(int i=0; i< this.myEquipments.size();i ++){
-                info = this.myEquipments.get(i);
-
-                db.execSQL("INSERT INTO Equipment VALUES('"
-                        + info.getID()
-                        + "','"
-                        + info.getName()
-                        + "'," + info.getCheckInDate().getTime()
-                        + "," + info.getInOut() +");");
-
-            }
-
-            db.close();
+            equipment.prepareDB(this);
+            equipment.insertEquipmentList(myEquipments);
+            equipment.closeDB();
 
             showMessage("Success", "保存成功");
-
 
         }
 
@@ -220,29 +193,6 @@ public class HistoryActiviry extends ActionBarActivity {
 
     public void showMessage(String title,String message)
     {
-
-//        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-//        builder1.setMessage(message);
-//        builder1.setCancelable(true);
-//        builder1.setPositiveButton("Yes",
-//                new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                });
-//        builder1.setNegativeButton("No",
-//                new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                });
-//
-//        AlertDialog alert11 = builder1.create();
-//        alert11.show();
-//
-//        return;
-
-
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setMessage(message);

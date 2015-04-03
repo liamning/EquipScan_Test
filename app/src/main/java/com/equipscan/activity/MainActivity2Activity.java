@@ -74,32 +74,21 @@ String TITLE;
         }
 
         isReaded = false;
-        mydecoderview = (QRCodeReaderView) findViewById(R.id.qrdecoderview);
-        mydecoderview.setOnQRCodeReadListener(this);
-
-       // myTextView = (TextView) findViewById(R.id.exampleTextView);
-
         line_image = (View) findViewById(R.id.red_line_image);
 
-        TranslateAnimation mAnimation = new TranslateAnimation(
-                TranslateAnimation.ABSOLUTE, 0f,
-                TranslateAnimation.ABSOLUTE, 0f,
-                TranslateAnimation.RELATIVE_TO_PARENT, 0f,
-                TranslateAnimation.RELATIVE_TO_PARENT, 0.5f);
-        mAnimation.setDuration(1000);
-        mAnimation.setRepeatCount(-1);
-        mAnimation.setRepeatMode(Animation.REVERSE);
-        mAnimation.setInterpolator(new LinearInterpolator());
+       // initCam();
 
+        init();
 
-        line_image.setAnimation(mAnimation);
-
-
-        init(); popupInit();
-
+        popupInit();
 
     }
 
+    private void initCam() {
+
+        mydecoderview = (QRCodeReaderView) findViewById(R.id.qrdecoderview);
+        mydecoderview.setOnQRCodeReadListener(this);
+    }
 
 
     public void init() {
@@ -242,37 +231,7 @@ String TITLE;
         }
 
         popupText.setText(result);
-
         popupMessage.showAsDropDown(line_image, 0, 0);
-
-       // popupMessage.setHeight(500);
-//        popupMessage.setFocusable(true);
-//
-//
-//        // Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
-//        int OFFSET_X = 0;
-//        int OFFSET_Y = 20;
-//
-//
-//        // Displaying the popup at the specified location, + offsets.
-//        popupMessage.showAtLocation(line_image, Gravity.NO_GRAVITY, OFFSET_X,OFFSET_Y);
-
-        return;
-//        Intent intent = new Intent(MainActivity2Activity.this, MainActivity22Activity.class);
-//
-//
-//        Bundle b = new Bundle();
-//        b.putString("key", text); //Your id
-//        intent.putExtras(b); //Put your id to your next Intent
-//
-//        //startActivity(intent);
-//        //myTextView.setText(text);
-//
-//        //Creating the instance of PopupMenu
-//        PopupMenu popup = new PopupMenu(MainActivity2Activity.this, getWindow().getDecorView().findViewById(android.R.id.content));
-//        //Inflating the Popup using xml file
-//        popup.getMenuInflater()
-//                .inflate(R.menu.scanoption, popup.getMenu());
 
     }
 
@@ -293,7 +252,14 @@ String TITLE;
     protected void onResume() {
         isReaded = false;
         super.onResume();
-        mydecoderview.getCameraManager().startPreview();
+       // mydecoderview.getCameraManager().startPreview();
+
+
+
+        titleText.setText("工具已扫描：");
+        popupText.setText("12312");
+        popupMessage.showAsDropDown(line_image, 0, 0);
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.equipscan.model;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -15,13 +16,17 @@ public class Equipment {
 
     SQLiteDatabase db;
 
-
-    private void prepareDB()
+    public void prepareDB(Context context)
     {
-
-        //db= SQLiteDatabase.openOrCreateDatabase("EquipmentDB", Context.MODE_PRIVATE, null);
-       // db= SQLiteDatabase.openOrCreateDatabase()
-        //db.execSQL("CREATE TABLE IF NOT EXISTS Equipment(ID VARCHAR,name VARCHAR,checkinDate int,inOut int);");
+        db= context.openOrCreateDatabase("EquipmentDB", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS "
+                + "Equipment(ID VARCHAR,"
+                + "name VARCHAR,"
+                + "staffname VARCHAR,"
+                + "approver VARCHAR,"
+                + "Remarks VARCHAR,"
+                + "checkinDate int,"
+                + "inOut int);");
     }
 
 
@@ -29,11 +34,14 @@ public class Equipment {
 
         ArrayList<EquipmentInfo> myEquipments = new ArrayList<EquipmentInfo>();
 
-        prepareDB();
         EquipmentInfo info;
-        Cursor c=db.rawQuery("SELECT * FROM Equipment order by CheckinDate desc", null);
+        Cursor c=db.rawQuery("SELECT ID, name, checkindate, inout, Remarks , approver "
+                +"FROM Equipment order by CheckinDate desc", null);
+
+
         if(c.moveToFirst())
         {
+            int count = 0;
             do{
                 info = new EquipmentInfo();
 
@@ -41,15 +49,45 @@ public class Equipment {
                 info.setName(c.getString(1));
                 info.setCheckInDate(new Date(c.getLong(2)));
                 info.setInOut(c.getInt(3));
+                info.setRemarks(c.getString(4));
+                info.setApprover(c.getString(5));
 
                 myEquipments.add(info);
 
-            }while (c.moveToNext());
+                count++;
+            }while (c.moveToNext() && (top == 0 || count < top));
+
+
         }
 
         db.close();
-        return null;
+
+        return myEquipments;
     }
 
 
+    public void insertEquipmentList(ArrayList<EquipmentInfo> myEquipments){
+
+        EquipmentInfo info;
+        for(int i=0; i< myEquipments.size();i ++){
+            info = myEquipments.get(i);
+
+            db.execSQL("INSERT INTO Equipment VALUES('"
+                    + info.getID()
+                    + "','"
+                    + info.getName()
+                    + "','"
+                    + info.getStaffName()
+                    + "','"
+                    + info.getApprover()
+                    + "','"
+                    + info.getRemarks()
+                    + "'," + info.getCheckInDate().getTime()
+                    + "," + info.getInOut() +");");
+
+        }
+    }
+
+    public void closeDB()
+    {db.close();}
 }
