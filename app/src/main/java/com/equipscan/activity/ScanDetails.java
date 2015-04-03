@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.equipscan.info.EquipmentInfo;
+import com.equipscan.model.Equipment;
 import com.example.ning.myapplicationsdfsdf.R;
 
 
@@ -89,7 +90,6 @@ public class ScanDetails extends ActionBarActivity {
                 R.layout.spinner_item, new String[]{"仓管员A","仓管员B","仓管员C"}, new String[]{"仓管员A","仓管员B","仓管员C"});
         spinner.setAdapter(karant_adapter);
 
-
         int spinnerPostion = karant_adapter.getPosition(info.getApprover());
         spinner.setSelection(spinnerPostion);
 
@@ -118,12 +118,10 @@ public class ScanDetails extends ActionBarActivity {
             info.setApprover(tv.getText().toString());
             info.setRemarks(txtComment.getText().toString());
 
-
-            prepareDB();
-            db.execSQL("update Equipment set Remarks='"+info.getRemarks()
-                    +"' ,approver='"+info.getApprover()+"' where ID='"+info.getID()+"' and checkInDate="+ info.getCheckInDate().getTime() );
-            db.close();
-
+            Equipment equipment = new Equipment();
+            equipment.prepareDB(this);
+            equipment.updateEquipment(info);
+            equipment.closeDB();
 
             showMessage("Success", "保存成功");
 

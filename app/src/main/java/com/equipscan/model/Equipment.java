@@ -88,6 +88,14 @@ public class Equipment {
         }
     }
 
+    public void updateEquipment(EquipmentInfo info){
+
+        db.execSQL("update Equipment set Remarks='"+info.getRemarks()
+                +"' ,approver='"+info.getApprover()+"' where ID='"+info.getID()+"' and checkInDate="+ info.getCheckInDate().getTime() );
+
+
+    }
+
     public void closeDB()
     {db.close();}
 }
