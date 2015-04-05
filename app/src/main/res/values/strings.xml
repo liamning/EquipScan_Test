@@ -10,4 +10,5 @@
     <string name="title_activity_equipment_detail">EquipmentDetail</string>
     <string name="title_activity_main_activity23">MainActivity23Activity</string>
     <string name="title_activity_scan_details">ScanDetails</string>
+    <string name="title_activity_usage_log">UsageLog</string>
 </resources>

@@ -1,7 +1,6 @@
 package com.equipscan.activity;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -22,13 +21,7 @@ import com.example.ning.myapplicationsdfsdf.R;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-
 import android.widget.ImageView;
-
-
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 public class HistoryActiviry extends ActionBarActivity {
 

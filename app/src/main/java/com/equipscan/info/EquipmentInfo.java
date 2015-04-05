@@ -76,6 +76,7 @@ public class EquipmentInfo implements Parcelable {
     }
 
     public String getRemarks() {
+        if(Remarks==null) return "";
         return Remarks;
     }
 

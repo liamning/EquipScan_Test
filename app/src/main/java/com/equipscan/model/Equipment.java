@@ -18,15 +18,18 @@ public class Equipment {
 
     public void prepareDB(Context context)
     {
-        db= context.openOrCreateDatabase("EquipmentDB", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS "
-                + "Equipment(ID VARCHAR,"
-                + "name VARCHAR,"
-                + "staffname VARCHAR,"
-                + "approver VARCHAR,"
-                + "Remarks VARCHAR,"
-                + "checkinDate int,"
-                + "inOut int);");
+        if(db == null){
+
+            db= context.openOrCreateDatabase("EquipmentDB", Context.MODE_PRIVATE, null);
+            db.execSQL("CREATE TABLE IF NOT EXISTS "
+                    + "Equipment(ID VARCHAR,"
+                    + "name VARCHAR,"
+                    + "staffname VARCHAR,"
+                    + "approver VARCHAR,"
+                    + "Remarks VARCHAR,"
+                    + "checkinDate int,"
+                    + "inOut int);");
+        }
     }
 
 
@@ -97,5 +100,8 @@ public class Equipment {
     }
 
     public void closeDB()
-    {db.close();}
+    {
+        if(db != null)
+            db.close();
+    }
 }

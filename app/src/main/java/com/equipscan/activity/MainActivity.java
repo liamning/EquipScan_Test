@@ -1,7 +1,9 @@
 package com.equipscan.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.TransitionDrawable;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,42 +30,17 @@ public class MainActivity extends ActionBarActivity {
     TransitionDrawable transition;
     private Menu menu;
 
-    @Override
-    protected void onResume() {
-
-        super.onResume();
-    //    if(transition != null)
-       // transition.reverseTransition(250);
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-       // getActionBar().setTitle("Hello world App");
         getSupportActionBar().setTitle("工具管理");
 
+
         registerCLickEvent();
-       // prepareEquipment();
-        //setListView();
-       // getView();
+
     }
-
-//
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//
-//        menu.add(1, 1, 0, "Open the file");
-//
-//        menu.add(1, 2, 1, "Save the file");
-//
-//        menu.add(1, 3, 2, "Close the file");
-//
-//        return true;
-//
-//    }
-
 
     private void registerCLickEvent(){
         View myLayout =  findViewById( R.id.tvScan  ); // root View id from that link
@@ -80,58 +57,62 @@ public class MainActivity extends ActionBarActivity {
                 transition.reverseTransition(250);
                 transition = null;
 
-                //Creating the instance of PopupMenu
-                PopupMenu popup = new PopupMenu(MainActivity.this, view);
-                //Inflating the Popup using xml file
-                popup.getMenuInflater()
-                        .inflate(R.menu.scanoption, popup.getMenu());
+                Intent intent = new Intent(MainActivity.this, MainActivity2Activity.class);
+                startActivity(intent);
 
 
-                //PopupMenu popupMenu = new PopupMenu(mContext, v);
-                //popupMenu.inflate(R.menu.album_overflow_menu);
-
-                // Force icons to show
-                Object menuHelper;
-                Class[] argTypes;
-                try {
-                    Field fMenuHelper = PopupMenu.class.getDeclaredField("mPopup");
-                    fMenuHelper.setAccessible(true);
-                    menuHelper = fMenuHelper.get(popup);
-                    argTypes = new Class[] { boolean.class };
-                    menuHelper.getClass().getDeclaredMethod("setForceShowIcon", argTypes).invoke(menuHelper, true);
-                } catch (Exception e) {
-                    // Possible exceptions are NoSuchMethodError and NoSuchFieldError
-                    //
-                    // In either case, an exception indicates something is wrong with the reflection code, or the
-                    // structure of the PopupMenu class or its dependencies has changed.
-                    //
-                    // These exceptions should never happen since we're shipping the AppCompat library in our own apk,
-                    // but in the case that they do, we simply can't force icons to display, so log the error and
-                    // show the menu normally.
-
-                   // Log.w(TAG, "error forcing menu icons to show", e);
-                }
-
-
-                //registering popup with OnMenuItemClickListener
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    public boolean onMenuItemClick(MenuItem item) {
-//                        Toast.makeText(
-//                                MainActivity.this,
-//                                "You Clicked : " + item.getTitle(),
-//                                Toast.LENGTH_SHORT
-//                        ).show();
-
-                        Intent intent = new Intent(MainActivity.this, MainActivity2Activity.class);
-
-                        intent.putExtra("title", item.getTitle());
-                        startActivity(intent);
-
-                        return true;
-                    }
-                });
-
-                popup.show(); //showing popup menu
+//                //Creating the instance of PopupMenu
+//                PopupMenu popup = new PopupMenu(MainActivity.this, view);
+//                //Inflating the Popup using xml file
+//                popup.getMenuInflater()
+//                        .inflate(R.menu.scanoption, popup.getMenu());
+//
+//
+//                //PopupMenu popupMenu = new PopupMenu(mContext, v);
+//                //popupMenu.inflate(R.menu.album_overflow_menu);
+//
+//                // Force icons to show
+//                Object menuHelper;
+//                Class[] argTypes;
+//                try {
+//                    Field fMenuHelper = PopupMenu.class.getDeclaredField("mPopup");
+//                    fMenuHelper.setAccessible(true);
+//                    menuHelper = fMenuHelper.get(popup);
+//                    argTypes = new Class[] { boolean.class };
+//                    menuHelper.getClass().getDeclaredMethod("setForceShowIcon", argTypes).invoke(menuHelper, true);
+//                } catch (Exception e) {
+//                    // Possible exceptions are NoSuchMethodError and NoSuchFieldError
+//                    //
+//                    // In either case, an exception indicates something is wrong with the reflection code, or the
+//                    // structure of the PopupMenu class or its dependencies has changed.
+//                    //
+//                    // These exceptions should never happen since we're shipping the AppCompat library in our own apk,
+//                    // but in the case that they do, we simply can't force icons to display, so log the error and
+//                    // show the menu normally.
+//
+//                   // Log.w(TAG, "error forcing menu icons to show", e);
+//                }
+//
+//
+//                //registering popup with OnMenuItemClickListener
+//                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+//                    public boolean onMenuItemClick(MenuItem item) {
+////                        Toast.makeText(
+////                                MainActivity.this,
+////                                "You Clicked : " + item.getTitle(),
+////                                Toast.LENGTH_SHORT
+////                        ).show();
+//
+//                        Intent intent = new Intent(MainActivity.this, MainActivity2Activity.class);
+//
+//                        intent.putExtra("title", item.getTitle());
+//                        startActivity(intent);
+//
+//                        return true;
+//                    }
+//                });
+//
+//                popup.show(); //showing popup menu
 
             }
 
@@ -175,16 +156,17 @@ public class MainActivity extends ActionBarActivity {
                 transition.reverseTransition(250);
                 transition = null;
 
+                dispatchTakePictureIntent();
 
-                EquipmentInfo info = new EquipmentInfo();
-                info.setID("A0001");
-                info.setName("防电手套");
-                info.setInOut(1);
-                info.setCheckInDate(new Date());
-
-                Intent intent = new Intent(MainActivity.this, ScanDetails.class);
-                intent.putExtra("selectedEquipment", info);
-                startActivity(intent);
+//                EquipmentInfo info = new EquipmentInfo();
+//                info.setID("A0001");
+//                info.setName("防电手套");
+//                info.setInOut(1);
+//                info.setCheckInDate(new Date());
+//
+//                Intent intent = new Intent(MainActivity.this, ScanDetails.class);
+//                intent.putExtra("selectedEquipment", info);
+//                startActivity(intent);
 
             }
 
@@ -208,6 +190,27 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            //mImageView.setImageBitmap(imageBitmap);
+
+
+            Intent intent = new Intent(MainActivity.this, ScanDetails.class);
+            intent.putExtra("data", imageBitmap);
+            startActivity(intent);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

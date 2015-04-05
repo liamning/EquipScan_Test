@@ -46,6 +46,10 @@
             android:name="com.equipscan.activity.ScanDetails"
             android:label="@string/title_activity_scan_details" >
         </activity>
+        <activity
+            android:name=".UsageLog"
+            android:label="@string/title_activity_usage_log" >
+        </activity>
     </application>
 
 </manifest>
