@@ -156,8 +156,11 @@ public class MainActivity extends ActionBarActivity {
                 transition.reverseTransition(250);
                 transition = null;
 
-                dispatchTakePictureIntent();
+               // dispatchTakePictureIntent();
 
+                Intent intent = new Intent(MainActivity.this, UsageLog.class);
+               // intent.putExtra("data", imageBitmap);
+                startActivity(intent);
 //                EquipmentInfo info = new EquipmentInfo();
 //                info.setID("A0001");
 //                info.setName("防电手套");
@@ -182,7 +185,21 @@ public class MainActivity extends ActionBarActivity {
             // Drawable lastColor;
 
             public void onClick(View view) {
+                transition = (TransitionDrawable) view.getBackground();
+                transition.startTransition(250);
+                transition.reverseTransition(250);
+                transition = null;
 
+
+                EquipmentInfo info = new EquipmentInfo();
+                info.setID("A0001");
+                info.setName("防电手套");
+                info.setInOut(1);
+                info.setCheckInDate(new Date());
+
+                Intent intent = new Intent(MainActivity.this, UsageLog.class);
+                intent.putExtra("selectedEquipment", info);
+                startActivity(intent);
             }
 
 
@@ -198,19 +215,19 @@ public class MainActivity extends ActionBarActivity {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            //mImageView.setImageBitmap(imageBitmap);
-
-
-            Intent intent = new Intent(MainActivity.this, ScanDetails.class);
-            intent.putExtra("data", imageBitmap);
-            startActivity(intent);
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+//            Bundle extras = data.getExtras();
+//            Bitmap imageBitmap = (Bitmap) extras.get("data");
+//            //mImageView.setImageBitmap(imageBitmap);
+//
+//
+//            Intent intent = new Intent(MainActivity.this, UsageLog.class);
+//            intent.putExtra("data", imageBitmap);
+//            startActivity(intent);
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

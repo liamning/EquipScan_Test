@@ -47,7 +47,7 @@
             android:label="@string/title_activity_scan_details" >
         </activity>
         <activity
-            android:name=".UsageLog"
+            android:name="com.equipscan.activity.UsageLog"
             android:label="@string/title_activity_usage_log" >
         </activity>
     </application>
