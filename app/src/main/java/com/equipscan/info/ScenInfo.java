@@ -9,11 +9,11 @@ import java.util.Date;
  */
 public class ScenInfo {
 
-    public String getID() {
+    public Integer getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
 
@@ -41,7 +41,7 @@ public class ScenInfo {
         CreateDate = createDate;
     }
 
-    private String ID;
+    private Integer ID;
     private Bitmap ScenImage;
     private String Remarks;
     private Date CreateDate;
