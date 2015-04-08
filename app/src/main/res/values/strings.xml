@@ -11,4 +11,8 @@
     <string name="title_activity_main_activity23">MainActivity23Activity</string>
     <string name="title_activity_scan_details">ScanDetails</string>
     <string name="title_activity_usage_log">UsageLog</string>
+    <string name="title_activity_sync_details">SyncDetailsActivity</string>
+    <string name="title_activity_helper">HelperActivity</string>
+    <string name="title_activity_scen_history">ScenHistoryActivity</string>
+    <string name="title_activity_scen_details">ScenDetailsActivity</string>
 </resources>

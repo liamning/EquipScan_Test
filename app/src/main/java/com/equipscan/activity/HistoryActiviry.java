@@ -55,28 +55,28 @@ public class HistoryActiviry extends ActionBarActivity {
     private void setListView() {
 
 
-          ListView equipmentListView = (ListView)findViewById(R.id.myList);
-          ArrayAdapter<EquipmentInfo> adapter = new MyListAdapter();
+        ListView equipmentListView = (ListView)findViewById(R.id.myList);
+        ArrayAdapter<EquipmentInfo> adapter = new MyListAdapter();
         equipmentListView.setAdapter(adapter);
 
-          equipmentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        @Override
-          public void onItemClick(AdapterView<?> parent, View view, int position,
-             long id) {
+        equipmentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
 
-              Intent intent = new Intent(HistoryActiviry.this, ScanDetails.class);
+                Intent intent = new Intent(HistoryActiviry.this, ScanDetails.class);
 //
 //test
 //
 //              String message = "abc";
 //                intent.putExtra("title", message);
 
-                 intent.putExtra("selectedEquipment", myEquipments.get(position));
+                intent.putExtra("selectedEquipment", myEquipments.get(position));
                 startActivity(intent);
 
-          }
+            }
 
-          });
+        });
 
     }
 

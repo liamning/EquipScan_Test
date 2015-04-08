@@ -63,8 +63,6 @@ public class Equipment {
 
         }
 
-        db.close();
-
         return myEquipments;
     }
 

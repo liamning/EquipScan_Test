@@ -7,20 +7,22 @@ import android.view.MenuItem;
 
 import com.example.ning.myapplicationsdfsdf.R;
 
-
-public class EquipmentDetail extends ActionBarActivity {
+public class SyncDetailsActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_equipment_detail);
+        setContentView(R.layout.activity_sync_details);
+
+
+        getSupportActionBar().setTitle("正在同步数据 。。。");
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_equipment_detail, menu);
+        getMenuInflater().inflate(R.menu.menu_sync_details, menu);
         return true;
     }
 

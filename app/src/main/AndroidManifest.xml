@@ -3,7 +3,7 @@
     package="com.example.ning.myapplicationsdfsdf" >
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"  />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -50,6 +50,22 @@
         <activity
             android:name="com.equipscan.activity.UsageLog"
             android:label="@string/title_activity_usage_log" >
+        </activity>
+        <activity
+            android:name="com.equipscan.activity.SyncDetailsActivity"
+            android:label="@string/title_activity_sync_details" >
+        </activity>
+        <activity
+            android:name="com.equipscan.activity.HelperActivity"
+            android:label="@string/title_activity_helper" >
+        </activity>
+        <activity
+            android:name="com.equipscan.activity.ScenHistoryActivity"
+            android:label="@string/title_activity_scen_history" >
+        </activity>
+        <activity
+            android:name="com.equipscan.activity.ScenDetailsActivity"
+            android:label="@string/title_activity_scen_details" >
         </activity>
     </application>
 

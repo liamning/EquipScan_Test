@@ -1,33 +1,39 @@
 package com.equipscan.activity;
 
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 
 import com.example.ning.myapplicationsdfsdf.R;
 
+import java.io.File;
 
-public class MainActivity232Activity extends ActionBarActivity {
+public class HelperActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_activity232);
-        getSupportActionBar().hide();
+        setContentView(R.layout.activity_helper);
 
+        getSupportActionBar().setTitle("使用说明");
+
+        init();
+    }
+
+    private void init() {
+
+        WebView helpView = (WebView) findViewById(R.id.helpView);
+        helpView.loadUrl("file:///android_asset/test.html");
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_activity232, menu);
-
-
-       // ActionBar actionBar = getActionBar();
-       // actionBar.hide();
-
+        getMenuInflater().inflate(R.menu.menu_helper, menu);
         return true;
     }
 

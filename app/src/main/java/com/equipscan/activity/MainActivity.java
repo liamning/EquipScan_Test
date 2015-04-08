@@ -24,12 +24,7 @@ import com.example.ning.myapplicationsdfsdf.R;
 
 public class MainActivity extends ActionBarActivity {
 
-    List<EquipmentInfo> myEquipments = new ArrayList<EquipmentInfo>();
-
-    private QRCodeReaderView mydecoderview;
     TransitionDrawable transition;
-    private Menu menu;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,27 +151,59 @@ public class MainActivity extends ActionBarActivity {
                 transition.reverseTransition(250);
                 transition = null;
 
-               // dispatchTakePictureIntent();
 
                 Intent intent = new Intent(MainActivity.this, UsageLog.class);
-               // intent.putExtra("data", imageBitmap);
                 startActivity(intent);
-//                EquipmentInfo info = new EquipmentInfo();
-//                info.setID("A0001");
-//                info.setName("防电手套");
-//                info.setInOut(1);
-//                info.setCheckInDate(new Date());
-//
-//                Intent intent = new Intent(MainActivity.this, ScanDetails.class);
-//                intent.putExtra("selectedEquipment", info);
-//                startActivity(intent);
 
             }
 
 
         });
 
-        myLayout =  findViewById( R.id.tvScenHistory ); // root View id from that link
+        myLayout =  findViewById( R.id.tvScenHistory );
+        myLayout.setOnClickListener(new View.OnClickListener()
+        {
+
+            // private boolean stateChanged;
+            // Drawable lastColor;
+
+            public void onClick(View view) {
+                transition = (TransitionDrawable) view.getBackground();
+                transition.startTransition(250);
+                transition.reverseTransition(250);
+                transition = null;
+
+                Intent intent = new Intent(MainActivity.this, ScenHistoryActivity.class);
+                startActivity(intent);
+            }
+
+
+        });
+
+
+
+        myLayout =  findViewById( R.id.tvSync );
+        myLayout.setOnClickListener(new View.OnClickListener()
+        {
+
+            // private boolean stateChanged;
+            // Drawable lastColor;
+
+            public void onClick(View view) {
+                transition = (TransitionDrawable) view.getBackground();
+                transition.startTransition(250);
+                transition.reverseTransition(250);
+                transition = null;
+
+                Intent intent = new Intent(MainActivity.this, SyncDetailsActivity.class);
+                startActivity(intent);
+            }
+
+
+        });
+
+
+        myLayout =  findViewById( R.id.tvHelper ); // root View id from that link
         // View myView = myLayout.findViewById( R.id.scanView );
         myLayout.setOnClickListener(new View.OnClickListener()
         {
@@ -190,51 +217,19 @@ public class MainActivity extends ActionBarActivity {
                 transition.reverseTransition(250);
                 transition = null;
 
-
-                EquipmentInfo info = new EquipmentInfo();
-                info.setID("A0001");
-                info.setName("防电手套");
-                info.setInOut(1);
-                info.setCheckInDate(new Date());
-
-                Intent intent = new Intent(MainActivity.this, UsageLog.class);
-                intent.putExtra("selectedEquipment", info);
+                Intent intent = new Intent(MainActivity.this, HelperActivity.class);
                 startActivity(intent);
             }
 
 
         });
-
     }
-
-    static final int REQUEST_IMAGE_CAPTURE = 1;
-
-    private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        }
-    }
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-//            Bundle extras = data.getExtras();
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//            //mImageView.setImageBitmap(imageBitmap);
-//
-//
-//            Intent intent = new Intent(MainActivity.this, UsageLog.class);
-//            intent.putExtra("data", imageBitmap);
-//            startActivity(intent);
-//        }
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        this.menu = menu;
         return true;
     }
 
